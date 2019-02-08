@@ -14,7 +14,7 @@ function Heita() {
 	var id_txt;
 	var i;
 	
-    if (heitot > 0) {
+    if (heitot > 0 && kierros < 16) {
 	    for (i = 0; i < arvo.length; i++) {
 		    if (lukko[i] != 1) {
 		        arvo[i] = Math.floor(Math.random() * 6 + 1);
@@ -58,6 +58,9 @@ function Aloita() {
 	kierros = 1;
 	vuoro = 0;
 	heitot = 3;
+	for (i=0;i<6;i++) {
+		lukko[i] = 0;
+	}
 	paivitaTila();
 }
 
@@ -89,7 +92,7 @@ function Lukko(index) {
 	
 	var txt_lukko;
 
-	if (heitot < 3) {	
+	if (heitot < 3 && heitot > 0) {	
 		switch (lukko[index-1]) {
 		case 0:
 			lukko[index-1] = 1;
@@ -105,8 +108,8 @@ function Lukko(index) {
 
 function paivitaTila() {
 	
-	var i, txt, txt_lukko,id_txt;
-	var x;
+	var i, txt, txt_lukko,id_txt,txt_tausta;
+	var x,y;
 	
 	// Päivitä heittojen määrä
 	document.getElementById("heitot").innerHTML = "Heitot: " + heitot;
@@ -126,15 +129,19 @@ function paivitaTila() {
 	// Päivitä lukkojen tila
 	for (i = 0;i < 5;i++) {
 		txt_lukko = "lukko" + (i + 1);
+		txt_tausta = "ntausta" + (i + 1);
+		y = document.getElementById(txt_tausta);
 		switch (lukko[i]) {
 			case 0:
-			    txt = "-----";
+			    //txt = "-----";
+				y.style.backgroundColor = "white";
 			    break;
 			case 1:
-				txt  = "VALITTU";
+				//txt  = "VALITTU";
+				y.style.backgroundColor = "gray";
 			    break;
-			}
-			document.getElementById(txt_lukko).innerHTML = txt;
+		}
+		//document.getElementById(txt_lukko).innerHTML = txt;
 	}
 }
 

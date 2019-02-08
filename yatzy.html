@@ -7,232 +7,245 @@
 
 <link rel="stylesheet" type="text/css" href="yatzy.css">
 
+<script src="yatzy.js"></script>
+<script src="yatzy_scores.js"></script>
+
 </head>
 
 <body>
 
-<script src="yatzy.js"></script>
-<script src="yatzy_scores.js"></script>
-
-<div>
-<table>
-	<tr>
-		<td id="ntausta1"><img id="noppa1" src="noppa1.jpg"></td>
-		<td id="ntausta1"><img id="noppa2" src="noppa1.jpg"></td>
-		<td id="ntausta1"><img id="noppa3" src="noppa1.jpg"></td>
-		<td id="ntausta1"><img id="noppa4" src="noppa1.jpg"></td>
-		<td id="ntausta1"><img id="noppa5" src="noppa1.jpg"></td>
-	</tr>
-	<tr>
-		<td><button id="lukko1" onclick="Lukko(1)">-----</button></td>
-		<td><button id="lukko2" onclick="Lukko(2)">-----</button></td>
-		<td><button id="lukko3" onclick="Lukko(3)">-----</button></td>
-		<td><button id="lukko4" onclick="Lukko(4)">-----</button></td>
-		<td><button id="lukko5" onclick="Lukko(5)">-----</button></td>
-	</tr>
-</table>
-
-<button onclick="Heita()">Heitä noppia!</button>
-<button type="button" onclick="UusiPeli()">Uusi peli</button>
-
-<!--
-<button type="button" onclick="Testi2()">Testausnappula</button>
-<button onclick="Nollaa()">Nollaa</button>
--->
-
-<div id="annanimet" hidden>
-<input id="annanimi1" type="text"><br>
-<input id="annanimi2" type="text"><br>
-<input id="annanimi3" type="text"><br>
-<input id="annanimi4" type="text"><br>
-<input id="annanimi5" type="text"><br>
-<input id="annanimi6" type="text"><br>
-<button type="button" onclick="Aloita()">Aloita!</button>
+<div class="header">
+  <h1>Yatzy</h1>
 </div>
 
-<p id="heitot" >Heitot: -</p>
-<p id="tila"></p>
-<p id="vuoro" >Vuoro: -</p>
+
+<div class="row">
+	<div class="col-6">
+
+		<p id="heitot" >Heitot: 0</p>
+		<p id="tila"></p>
+		<p id="vuoro" >Vuoro:</p>
+
+		<table id="nopat">
+			<tr id="nopat">
+				<td id="ntausta1"><a href="javascript:Lukko(1);"><img id="noppa1" src="noppa1.jpg"></a></td>
+				<td id="ntausta2"><a href="javascript:Lukko(2);"><img id="noppa2" src="noppa1.jpg"></a></td>
+				<td id="ntausta3"><a href="javascript:Lukko(3);"><img id="noppa3" src="noppa1.jpg"></a></td>
+				<td id="ntausta4"><a href="javascript:Lukko(4);"><img id="noppa4" src="noppa1.jpg"></a></td>
+				<td id="ntausta5"><a href="javascript:Lukko(5);"><img id="noppa5" src="noppa1.jpg"></a></td>
+			</tr>
+		</table>
+
+		<br>
+
+		<button id="btnThrow" onclick="Heita()">Heitä noppia!</button>
+		<button id="btnNewGame" type="button" onclick="UusiPeli()">Uusi peli</button>
+
+		<!--
+		
+		<br>
+		<button type="button" onclick="Testi()">Testaa</button>
+		<button onclick="Nollaa()">Nollaa</button>
+		<br>
+		-->
+
+		<div id="annanimet" hidden>
+		<br>
+			<input id="annanimi1" type="text"><br>
+			<input id="annanimi2" type="text"><br>
+			<input id="annanimi3" type="text"><br>
+			<input id="annanimi4" type="text"><br>
+			<input id="annanimi5" type="text"><br>
+			<input id="annanimi6" type="text"><br>
+			<button type="button" onclick="Aloita()">Aloita!</button>
+			<br>
+		</div>
+
+		</div>
+	</div>
 
 
-</div>
-
-<div>
-<table>
-	<tr>
-		<th>Pistetaulukko</th>
-		<th id="nimi1"></th>
-		<th id="nimi2"></th>
-		<th id="nimi3"></th>
-		<th id="nimi4"></th>
-		<th id="nimi5"></th>
-		<th id="nimi6"></th>
-	</tr>
-	<tr>
-		<td><button onclick="Ykkoset()">Ykköset</button></td>
-		<td id="P1R1"></td>
-		<td id="P2R1"></td>
-		<td id="P3R1"></td>
-		<td id="P4R1"></td>
-		<td id="P5R1"></td>
-		<td id="P6R1"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Kakkoset()">Kakkoset</button></td>
-		<td id="P1R2"></td>
-		<td id="P2R2"></td>
-		<td id="P3R2"></td>
-		<td id="P4R2"></td>
-		<td id="P5R2"></td>
-		<td id="P6R2"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Kolmoset()">Kolmoset</button></td>
-		<td id="P1R3"></td>
-		<td id="P2R3"></td>
-		<td id="P3R3"></td>
-		<td id="P4R3"></td>
-		<td id="P5R3"></td>
-		<td id="P6R3"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Neloset()">Neloset</button></td>
-		<td id="P1R4"></td>
-		<td id="P2R4"></td>
-		<td id="P3R4"></td>
-		<td id="P4R4"></td>
-		<td id="P5R4"></td>
-		<td id="P6R4"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Viitoset()">Viitoset</button></td>
-		<td id="P1R5"></td>
-		<td id="P2R5"></td>
-		<td id="P3R5"></td>
-		<td id="P4R5"></td>
-		<td id="P5R5"></td>
-		<td id="P6R5"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Kuutoset()">Kuutoset</button></td>
-		<td id="P1R6"></td>
-		<td id="P2R6"></td>
-		<td id="P3R6"></td>
-		<td id="P4R6"></td>
-		<td id="P5R6"></td>
-		<td id="P6R6"></td>
-	</tr>
-	<tr>
-		<td>Summa</td>
-		<td id="P1R7"></td>
-		<td id="P2R7"></td>
-		<td id="P3R7"></td>
-		<td id="P4R7"></td>
-		<td id="P5R7"></td>
-		<td id="P6R7"></td>
-	</tr>
-	<tr>
-		<td>Bonus</td>
-		<td id="P1R8"></td>
-		<td id="P2R8"></td>
-		<td id="P3R8"></td>
-		<td id="P4R8"></td>
-		<td id="P5R8"></td>
-		<td id="P6R8"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Pari()">Pari</button></td>
-		<td id="P1R9"></td>
-		<td id="P2R9"></td>
-		<td id="P3R9"></td>
-		<td id="P4R9"></td>
-		<td id="P5R9"></td>
-		<td id="P6R9"></td>
-	</tr>
-	<tr>
-		<td><button onclick="kaksiParia()">2 paria</button></td>
-		<td id="P1R10"></td>
-		<td id="P2R10"></td>
-		<td id="P3R10"></td>
-		<td id="P4R10"></td>
-		<td id="P5R10"></td>
-		<td id="P6R10"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Kolmiluku()">Kolmiluku</button></td>
-		<td id="P1R11"></td>
-		<td id="P2R11"></td>
-		<td id="P3R11"></td>
-		<td id="P4R11"></td>
-		<td id="P5R11"></td>
-		<td id="P6R11"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Neliluku()">Neliluku</button></td>
-		<td id="P1R12"></td>
-		<td id="P2R12"></td>
-		<td id="P3R12"></td>
-		<td id="P4R12"></td>
-		<td id="P5R12"></td>
-		<td id="P6R12"></td>
-	</tr>
-	<tr>
-		<td><button onclick="PieniSuora()">Pieni suora</button></td>
-		<td id="P1R13"></td>
-		<td id="P2R13"></td>
-		<td id="P3R13"></td>
-		<td id="P4R13"></td>
-		<td id="P5R13"></td>
-		<td id="P6R13"></td>
-	</tr>
-	<tr>
-		<td><button onclick="IsoSuora()">Iso suora</button></td>
-		<td id="P1R14"></td>
-		<td id="P2R14"></td>
-		<td id="P3R14"></td>
-		<td id="P4R14"></td>
-		<td id="P5R14"></td>
-		<td id="P6R14"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Mokki()">Mökki</button></td>
-		<td id="P1R15"></td>
-		<td id="P2R15"></td>
-		<td id="P3R15"></td>
-		<td id="P4R15"></td>
-		<td id="P5R15"></td>
-		<td id="P6R15"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Sattuma()">Sattuma</button></td>
-		<td id="P1R16"></td>
-		<td id="P2R16"></td>
-		<td id="P3R16"></td>
-		<td id="P4R16"></td>
-		<td id="P5R16"></td>
-		<td id="P6R16"></td>
-	</tr>
-	<tr>
-		<td><button onclick="Yatzy()">Yatzy</button></td>
-		<td id="P1R17"></td>
-		<td id="P2R17"></td>
-		<td id="P3R17"></td>
-		<td id="P4R17"></td>
-		<td id="P5R17"></td>
-		<td id="P6R17"></td>
-	</tr>
-	<tr>
-		<td>Summa</td>
-		<td id="P1R18"></td>
-		<td id="P2R18"></td>
-		<td id="P3R18"></td>
-		<td id="P4R18"></td>
-		<td id="P5R18"></td>
-		<td id="P6R18"></td>
-	</tr>
-</table>
-</div>
-
+	<div class="col-6">
+		
+			<br>
+			<table>
+				<tr>
+					<th>Pistetaulukko</th>
+					<th id="nimi1"></th>
+					<th id="nimi2"></th>
+					<th id="nimi3"></th>
+					<th id="nimi4"></th>
+					<th id="nimi5"></th>
+					<th id="nimi6"></th>
+				</tr>
+				<tr>
+					<td><button onclick="Ykkoset()">Ykköset</button></td>
+					<td id="P1R1"></td>
+					<td id="P2R1"></td>
+					<td id="P3R1"></td>
+					<td id="P4R1"></td>
+					<td id="P5R1"></td>
+					<td id="P6R1"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Kakkoset()">Kakkoset</button></td>
+					<td id="P1R2"></td>
+					<td id="P2R2"></td>
+					<td id="P3R2"></td>
+					<td id="P4R2"></td>
+					<td id="P5R2"></td>
+					<td id="P6R2"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Kolmoset()">Kolmoset</button></td>
+					<td id="P1R3"></td>
+					<td id="P2R3"></td>
+					<td id="P3R3"></td>
+					<td id="P4R3"></td>
+					<td id="P5R3"></td>
+					<td id="P6R3"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Neloset()">Neloset</button></td>
+					<td id="P1R4"></td>
+					<td id="P2R4"></td>
+					<td id="P3R4"></td>
+					<td id="P4R4"></td>
+					<td id="P5R4"></td>
+					<td id="P6R4"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Viitoset()">Viitoset</button></td>
+					<td id="P1R5"></td>
+					<td id="P2R5"></td>
+					<td id="P3R5"></td>
+					<td id="P4R5"></td>
+					<td id="P5R5"></td>
+					<td id="P6R5"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Kuutoset()">Kuutoset</button></td>
+					<td id="P1R6"></td>
+					<td id="P2R6"></td>
+					<td id="P3R6"></td>
+					<td id="P4R6"></td>
+					<td id="P5R6"></td>
+					<td id="P6R6"></td>
+				</tr>
+				<tr>
+					<td>Summa</td>
+					<td id="P1R7"></td>
+					<td id="P2R7"></td>
+					<td id="P3R7"></td>
+					<td id="P4R7"></td>
+					<td id="P5R7"></td>
+					<td id="P6R7"></td>
+				</tr>
+				<tr>
+					<td>Bonus</td>
+					<td id="P1R8"></td>
+					<td id="P2R8"></td>
+					<td id="P3R8"></td>
+					<td id="P4R8"></td>
+					<td id="P5R8"></td>
+					<td id="P6R8"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Pari()">Pari</button></td>
+					<td id="P1R9"></td>
+					<td id="P2R9"></td>
+					<td id="P3R9"></td>
+					<td id="P4R9"></td>
+					<td id="P5R9"></td>
+					<td id="P6R9"></td>
+				</tr>
+				<tr>
+					<td><button onclick="kaksiParia()">2 paria</button></td>
+					<td id="P1R10"></td>
+					<td id="P2R10"></td>
+					<td id="P3R10"></td>
+					<td id="P4R10"></td>
+					<td id="P5R10"></td>
+					<td id="P6R10"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Kolmiluku()">Kolmiluku</button></td>
+					<td id="P1R11"></td>
+					<td id="P2R11"></td>
+					<td id="P3R11"></td>
+					<td id="P4R11"></td>
+					<td id="P5R11"></td>
+					<td id="P6R11"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Neliluku()">Neliluku</button></td>
+					<td id="P1R12"></td>
+					<td id="P2R12"></td>
+					<td id="P3R12"></td>
+					<td id="P4R12"></td>
+					<td id="P5R12"></td>
+					<td id="P6R12"></td>
+				</tr>
+				<tr>
+					<td><button onclick="PieniSuora()">Pieni suora</button></td>
+					<td id="P1R13"></td>
+					<td id="P2R13"></td>
+					<td id="P3R13"></td>
+					<td id="P4R13"></td>
+					<td id="P5R13"></td>
+					<td id="P6R13"></td>
+				</tr>
+				<tr>
+					<td><button onclick="IsoSuora()">Iso suora</button></td>
+					<td id="P1R14"></td>
+					<td id="P2R14"></td>
+					<td id="P3R14"></td>
+					<td id="P4R14"></td>
+					<td id="P5R14"></td>
+					<td id="P6R14"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Mokki()">Mökki</button></td>
+					<td id="P1R15"></td>
+					<td id="P2R15"></td>
+					<td id="P3R15"></td>
+					<td id="P4R15"></td>
+					<td id="P5R15"></td>
+					<td id="P6R15"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Sattuma()">Sattuma</button></td>
+					<td id="P1R16"></td>
+					<td id="P2R16"></td>
+					<td id="P3R16"></td>
+					<td id="P4R16"></td>
+					<td id="P5R16"></td>
+					<td id="P6R16"></td>
+				</tr>
+				<tr>
+					<td><button onclick="Yatzy()">Yatzy</button></td>
+					<td id="P1R17"></td>
+					<td id="P2R17"></td>
+					<td id="P3R17"></td>
+					<td id="P4R17"></td>
+					<td id="P5R17"></td>
+					<td id="P6R17"></td>
+				</tr>
+				<tr>
+					<td>Summa</td>
+					<td id="P1R18"></td>
+					<td id="P2R18"></td>
+					<td id="P3R18"></td>
+					<td id="P4R18"></td>
+					<td id="P5R18"></td>
+					<td id="P6R18"></td>
+				</tr>
+			</table>
+			<br>
+		
+	</div>
+</div> 
+	
 </body>
 </html>
 
